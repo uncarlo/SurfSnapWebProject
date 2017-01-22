@@ -11,4 +11,9 @@ export class PictureService {
   getPictures(): Promise<Picture[]> {
     return Promise.resolve(PICTURES);
   }
+
+  getPicture(id): Promise<Picture> {
+    return this.getPictures()
+      .then(pictures => pictures.find(picture => picture.id === id));
+  }
 }

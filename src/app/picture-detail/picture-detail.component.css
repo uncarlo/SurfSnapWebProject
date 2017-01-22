@@ -1,0 +1,17 @@
+.picture-detail-root {
+  width: 500px;
+  margin: 10px;
+}
+
+img {
+  width: 100%;
+}
+
+.picture-options {
+  width: 100%;
+}
+
+.picture-options button {
+  margin-top: 10px;
+  width: 49.5%;
+}

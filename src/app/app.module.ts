@@ -1,5 +1,8 @@
 // https://github.com/angular/angular-cli#installation
 
+// [CT] Loads all the RxJS extensions
+import './rxjs-extensions';
+
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
@@ -15,6 +18,7 @@ import { LocationSearchComponent } from './location-search/location-search.compo
 
 // SERVICES
 import { PictureService } from './picture-service/picture.service';
+import { PictureDetailComponent } from './picture-detail/picture-detail.component';
 
 @NgModule({
   declarations: [
@@ -22,7 +26,8 @@ import { PictureService } from './picture-service/picture.service';
     SearchComponent,
     PictureViewComponent,
     PictureViewComponent,
-    LocationSearchComponent
+    LocationSearchComponent,
+    PictureDetailComponent
   ],
   imports: [
     BrowserModule,

@@ -6,7 +6,9 @@
     <h2>Pictures</h2>
     <ul class="rig columns-4">
       <li *ngFor="let picture of pictures">
-        <img src="{{picture.path}}" alt="">
+        <a [routerLink]="['/detail', picture.id]">
+          <img src="{{picture.path}}" alt="">
+        </a>
       </li>
     </ul>
     </div>
