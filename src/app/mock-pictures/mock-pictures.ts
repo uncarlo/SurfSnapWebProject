@@ -1,0 +1,28 @@
+import { Picture } from '../picture';
+export const PICTURES: Picture[] = [
+  {id: 11, path: 'app/mock-pictures/1.jpg'},
+  {id: 12, path: 'app/mock-pictures/2.jpg'},
+  {id: 13, path: 'app/mock-pictures/3.jpg'},
+  {id: 14, path: 'app/mock-pictures/4.jpg'},
+  {id: 15, path: 'app/mock-pictures/5.jpg'},
+  {id: 16, path: 'app/mock-pictures/1.jpg'},
+  {id: 17, path: 'app/mock-pictures/2.jpg'},
+  {id: 18, path: 'app/mock-pictures/3.jpg'},
+  {id: 19, path: 'app/mock-pictures/4.jpg'},
+  {id: 20, path: 'app/mock-pictures/5.jpg'},
+  {id: 21, path: 'app/mock-pictures/1.jpg'},
+  {id: 22, path: 'app/mock-pictures/2.jpg'},
+  {id: 23, path: 'app/mock-pictures/3.jpg'},
+  {id: 24, path: 'app/mock-pictures/4.jpg'},
+  {id: 25, path: 'app/mock-pictures/5.jpg'},
+  {id: 26, path: 'app/mock-pictures/1.jpg'},
+  {id: 27, path: 'app/mock-pictures/2.jpg'},
+  {id: 28, path: 'app/mock-pictures/3.jpg'},
+  {id: 29, path: 'app/mock-pictures/4.jpg'},
+  {id: 30, path: 'app/mock-pictures/5.jpg'},
+  {id: 31, path: 'app/mock-pictures/1.jpg'},
+  {id: 32, path: 'app/mock-pictures/2.jpg'},
+  {id: 33, path: 'app/mock-pictures/3.jpg'},
+  {id: 34, path: 'app/mock-pictures/4.jpg'},
+  {id: 35, path: 'app/mock-pictures/5.jpg'}
+];

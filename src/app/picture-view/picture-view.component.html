@@ -3,6 +3,11 @@
     <app-location-search></app-location-search>
   </div>
   <div class="col-lg-9">
-    Picture View Works!
-  </div>
+    <h2>Pictures</h2>
+    <ul class="rig columns-4">
+      <li *ngFor="let picture of pictures">
+        <img src="{{picture.path}}" alt="">
+      </li>
+    </ul>
+    </div>
 </div>

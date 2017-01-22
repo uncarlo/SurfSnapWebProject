@@ -13,6 +13,9 @@ import { SearchComponent } from './search/search.component';
 import { PictureViewComponent } from './picture-view/picture-view.component';
 import { LocationSearchComponent } from './location-search/location-search.component';
 
+// SERVICES
+import { PictureService } from './picture-service/picture.service';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -28,7 +31,7 @@ import { LocationSearchComponent } from './location-search/location-search.compo
     AlertModule.forRoot(),
     AppRoutingModule
   ],
-  providers: [],
+  providers: [PictureService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
