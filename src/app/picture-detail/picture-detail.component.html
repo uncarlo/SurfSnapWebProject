@@ -9,3 +9,16 @@
     <button type="button" class="btn btn-success">Buy</button>
   </div>
 </div>
+
+<div>
+  items:
+  <ul>
+    <li class="text" *ngFor="let item of items | async">
+      <p>id = {{item.id}}</p>
+      <p>path = {{item.path}}</p>
+      <p>name = {{item.name}}</p>
+
+      <img src="{{item.path}}" style="height: 100px; width: auto;" />
+    </li>
+  </ul>
+</div>
