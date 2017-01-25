@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 
 import { Picture }    from '../picture';
 import { PICTURES }   from '../mock-pictures/mock-pictures'
+import {Observable} from 'rxjs/Observable';
 
 @Injectable()
 export class PictureService {
@@ -9,11 +10,10 @@ export class PictureService {
   constructor() { }
 
   getPictures(): Promise<Picture[]> {
-    return Promise.resolve(PICTURES);
+    return Promise.resolve(Observable.of(PICTURES));
   }
 
-  getPicture(id): Promise<Picture> {
-    return this.getPictures()
-      .then(pictures => pictures.find(picture => picture.id === id));
+  getPicture(uid): Promise<Picture> {
+    return Promise.resolve(Observable.of(PICTURES.find(picture => picture.uid === +uid)));
   }
 }

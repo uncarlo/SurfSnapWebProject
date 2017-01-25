@@ -1,7 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
 
-import { PictureService } from "../picture-service/picture.service";
-import { Picture } from "../picture";
+import {PictureService} from "../picture-service/picture.service";
+import {FirebaseService} from "../firebase-service/firebase.service";
+import {Picture} from "../picture";
 
 @Component({
   selector: 'app-picture-view',
@@ -11,12 +12,12 @@ import { Picture } from "../picture";
 
 export class PictureViewComponent implements OnInit {
 
-  pictures: Picture[];
+  private pictures: Picture[];
 
-  constructor(private pictureService: PictureService) { }
-
-  ngOnInit() {
-    this.pictureService.getPictures().then(pictures => this.pictures = pictures);
+  constructor(private pictureService: PictureService) {
   }
 
+  ngOnInit() {
+    this.pictureService.getPictures().then(pictures => { this.pictures = pictures;});
+  }
 }

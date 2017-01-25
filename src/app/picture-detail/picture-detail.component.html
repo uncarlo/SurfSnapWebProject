@@ -1,8 +1,9 @@
 <p>Picture Detail</p>
 
 <div class="picture-detail-root" *ngIf="picture">
-  <p><a href="{{picture.path}}">Path: {{picture.path}}</a></p>
-  <img src="{{picture.path}}" />
+
+  <p><a href="{{(picture | async)?.path}}">Path: {{(picture | async)?.path}}</a></p>
+  <img src="{{(picture | async)?.path}}" />
 
   <div class="picture-options">
     <button type="button" class="btn btn-primary">Share</button>

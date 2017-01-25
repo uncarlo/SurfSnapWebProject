@@ -1,8 +1,11 @@
-import { Component, OnInit }      from '@angular/core';
-import { ActivatedRoute, Params } from '@angular/router';
+import {Component, OnInit}      from '@angular/core';
+import {ActivatedRoute, Params} from '@angular/router';
 
-import { PictureService } from '../picture-service/picture.service';
-import { Picture } from "../picture";
+import {PictureService} from '../picture-service/picture.service';
+import {FirebaseService} from '../firebase-service/firebase.service';
+import {Picture} from "../picture";
+
+import {AngularFire, FirebaseListObservable} from 'angularfire2';
 
 @Component({
   selector: 'app-picture-detail',
@@ -11,12 +14,11 @@ import { Picture } from "../picture";
 })
 export class PictureDetailComponent implements OnInit {
 
-  private picture : Picture;
+  private picture: Picture;
 
-  constructor(
-    private pictureService : PictureService,
-    private route: ActivatedRoute
-  ) { }
+  constructor(private pictureService: PictureService,
+              private route: ActivatedRoute) {
+  }
 
   ngOnInit() {
     /*
@@ -26,7 +28,7 @@ export class PictureDetailComponent implements OnInit {
      */
     // [CT]: +params['id'] converts the param into a number ([+] operator in JS).
     this.route.params
-      .switchMap((params: Params) => this.pictureService.getPicture(+params['id']))
+      .switchMap((params: Params) => this.pictureService.getPicture(params['uid']))
       .subscribe(picture => this.picture = picture);
   }
 }

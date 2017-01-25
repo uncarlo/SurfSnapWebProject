@@ -5,11 +5,11 @@
   <div class="col-lg-9">
     <h2>Pictures</h2>
     <ul class="rig columns-4">
-      <li *ngFor="let picture of pictures">
-        <a [routerLink]="['/detail', picture.id]">
-          <img src="{{picture.path}}" alt="">
+      <li *ngFor="let picture of pictures | async">
+        <a [routerLink]="['/detail', picture.uid]">
+          <img src="{{picture.path}}" alt="{{picture.name}}">
         </a>
       </li>
     </ul>
-    </div>
+  </div>
 </div>
