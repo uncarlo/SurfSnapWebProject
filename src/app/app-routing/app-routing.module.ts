@@ -7,7 +7,7 @@ import { PictureDetailComponent } from '../picture-detail/picture-detail.compone
 const routes: Routes = [
   { path: '', redirectTo: '/pictureView', pathMatch: 'full' },
   { path: 'pictureView', component: PictureViewComponent },
-  { path: 'detail/:id', component: PictureDetailComponent }
+  { path: 'detail/:uid', component: PictureDetailComponent }
 ];
 
 @NgModule({

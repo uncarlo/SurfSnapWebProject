@@ -18,10 +18,11 @@ import { AlertModule } from "ng2-bootstrap";
 import { SearchComponent } from './search/search.component';
 import { PictureViewComponent } from './picture-view/picture-view.component';
 import { LocationSearchComponent } from './location-search/location-search.component';
+import { PictureDetailComponent } from './picture-detail/picture-detail.component';
 
 // SERVICES
 import { PictureService } from './picture-service/picture.service';
-import { PictureDetailComponent } from './picture-detail/picture-detail.component';
+import { FirebaseService } from './firebase-service/firebase.service';
 
 // Must export the config
 export const firebaseConfig = {
@@ -49,7 +50,11 @@ export const firebaseConfig = {
     AppRoutingModule,
     AngularFireModule.initializeApp(firebaseConfig)
   ],
-  providers: [PictureService, AngularFire],
+  providers: [
+    PictureService,
+    AngularFire,
+    FirebaseService
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
