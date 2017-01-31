@@ -6,7 +6,7 @@
     <h2>Pictures</h2>
     <ul class="rig columns-4">
       <li *ngFor="let picture of pictures | async">
-        <a [routerLink]="['/detail', picture.uid]">
+        <a [routerLink]="['/detail', country, state, city, beach, picture.uid]">
           <img src="{{picture.path}}" alt="{{picture.name}}">
         </a>
       </li>

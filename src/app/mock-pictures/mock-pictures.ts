@@ -1,4 +1,4 @@
-import { Picture } from '../picture';
+import { Picture } from '../dtos/picture';
 export const PICTURES: Picture[] = [
   {uid: 1, path: 'app/mock-pictures/1.jpg'},
   {uid: 2, path: 'app/mock-pictures/2.jpg'},
