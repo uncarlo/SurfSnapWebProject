@@ -6,13 +6,13 @@
   <ul>
     <li *ngFor="let country of countries | async">
       <a (click)="onLocationClick(country.name)">{{country.name}}</a>
-      <ul *ngIf="states">
+      <ul *ngIf="states && country.name === expandedCountry">
         <li *ngFor="let state of states | async">
           <a (click)="onStateClick(country.name, state.name)">{{state.name}}</a>
-          <ul *ngIf="cities">
+          <ul *ngIf="cities && state.name === expandedState">
             <li *ngFor="let city of cities | async">
               <a (click)="onCityClick(country.name, state.name, city.name)">{{city.name}}</a>
-              <ul *ngIf="beaches">
+              <ul *ngIf="beaches && city.name === expandedCity">
                 <li *ngFor="let beach of beaches | async">
                   <a [routerLink]="['/pictureView', country.name, state.name, city.name, beach.name]">{{beach.name}}</a>
                 </li>
