@@ -3,21 +3,21 @@ import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 import { By } from '@angular/platform-browser';
 import { DebugElement } from '@angular/core';
 
-import { LocationSearchComponent } from './location-search.component';
+import { LocationListComponent } from './location-list.component';
 
-describe('LocationSearchComponent', () => {
-  let component: LocationSearchComponent;
-  let fixture: ComponentFixture<LocationSearchComponent>;
+describe('LocationListComponent', () => {
+  let component: LocationListComponent;
+  let fixture: ComponentFixture<LocationListComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ LocationSearchComponent ]
+      declarations: [ LocationListComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(LocationSearchComponent);
+    fixture = TestBed.createComponent(LocationListComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
