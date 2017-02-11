@@ -3,6 +3,7 @@ import {Component, OnInit} from '@angular/core';
 import {Country, State, Beach, City} from '../dtos/location'
 
 import {FirebaseService} from "../firebase-service/firebase.service";
+import {Observable} from "rxjs";
 
 @Component({
   selector: 'app-location-list',
@@ -11,10 +12,10 @@ import {FirebaseService} from "../firebase-service/firebase.service";
 })
 export class LocationListComponent implements OnInit {
 
-  private countries: Country[];
-  private states: State[];
-  private cities: City[];
-  private beaches: Beach[];
+  private countries: Observable<Country[]>;
+  private states: Observable<State[]>;
+  private cities: Observable<City[]>;
+  private beaches: Observable<Beach[]>;
 
   private expandedCountry: string;
   private expandedState: string;
@@ -24,24 +25,24 @@ export class LocationListComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.pictureService.getLocations().then(locations => this.countries = locations);
+    this.countries = this.pictureService.getLocations();
   }
 
   onLocationClick(countryName) {
     this.expandedCountry = countryName;
 
-    this.pictureService.getStates(countryName).then(states => this.states = states);
+    this.states = this.pictureService.getStates(countryName)
   }
 
   onStateClick(countryName, stateName) {
     this.expandedState = stateName;
 
-    this.pictureService.getCities(countryName, stateName).then(cities => this.cities = cities);
+    this.cities = this.pictureService.getCities(countryName, stateName);
   }
 
   onCityClick(countryName, stateName, cityName) {
     this.expandedCity = cityName;
 
-    this.pictureService.getBeaches(countryName, stateName, cityName).then(beaches => this.beaches = beaches);
+    this.beaches = this.pictureService.getBeaches(countryName, stateName, cityName);
   }
 }

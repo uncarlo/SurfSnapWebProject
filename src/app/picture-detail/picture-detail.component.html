@@ -2,7 +2,8 @@
 
 <div class="picture-detail-root" *ngIf="picture">
 
-  <p><a href="{{(picture | async)?.path}}">Path: {{(picture | async)?.path}}</a></p>
+  <p>Path: <a href="{{(picture | async)?.path}}">{{(picture | async)?.path}}</a></p>
+  <p>Date Taken: <strong>{{(picture | async)?.dateTaken}}</strong></p>
   <img src="{{(picture | async)?.path}}" />
 
   <div class="picture-options">
