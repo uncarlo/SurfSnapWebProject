@@ -10,7 +10,6 @@ import {Subject, Observable} from "rxjs";
 export class FirebaseService {
 
   constructor(private angularFire: AngularFire) {
-    this.dateTakenSubject = new Subject();
   }
 
   getPicture(countryName, stateName, cityName, beachName, pictureUid): Observable<Picture> {
@@ -20,17 +19,17 @@ export class FirebaseService {
     return picture;
   }
 
-  private dateTakenSubject: Subject<any>;
-
   getPictures(countryName, stateName, cityName, beachName): Observable<Picture[]> {
     var pictures =
-      this.angularFire.database.list(`/Locations/${countryName}/states/${stateName}/cities/${cityName}/beaches/${beachName}/pictures`,
-        {
-          query:{
-            orderByChild: 'dateTaken',
-            // equalTo: this.dateTakenSubject
-          }
-        });
+      this.angularFire.database.list(`/Locations/${countryName}/states/${stateName}/cities/${cityName}/beaches/${beachName}/pictures`) as Observable<Picture[]>;
+
+    pictures = pictures.map(pictures => {
+      for(var i = 0; i < pictures.length; i++) {
+        pictures[i].dateTaken = new Date(pictures[i].dateTaken);
+      }
+
+      return pictures;
+    });
 
     return pictures;
   }

@@ -31,3 +31,5 @@ Run `ng github-pages:deploy` to deploy to GitHub Pages.
 To get more help on the `angular-cli` use `ng help` or go check out the [Angular-CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
 
 [Angular 2 - Firebase Documentation](http://codingthesmartway.com/angular-2-firebase-introduction/)
+
+[NG2 Firebase Tutorial](http://blog.angular-university.io/angular-2-firebase/)

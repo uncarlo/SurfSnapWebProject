@@ -14,7 +14,7 @@
 
     <ul class="rig columns-4">
       <li *ngFor="let picture of pictures">
-        <p>debug: {{picture.dateTaken}}</p>
+        <p>debug: {{picture.dateTaken.toLocaleDateString()}}</p>
         <a [routerLink]="['/detail', country, state, city, beach, picture.uid]">
           <img src="{{picture.path}}" alt="{{picture.name}}">
         </a>

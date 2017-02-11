@@ -2,9 +2,9 @@
 
 <div class="picture-detail-root" *ngIf="picture">
 
-  <p>Path: <a href="{{(picture | async)?.path}}">{{(picture | async)?.path}}</a></p>
-  <p>Date Taken: <strong>{{(picture | async)?.dateTaken}}</strong></p>
-  <img src="{{(picture | async)?.path}}" />
+  <p>Path: <a href="{{picture.path}}">{{picture.path}}</a></p>
+  <p>Date Taken: <strong>{{picture.dateTaken}}</strong></p>
+  <img src="{{picture.path}}" />
 
   <div class="picture-options">
     <button type="button" class="btn btn-primary">Share</button>
