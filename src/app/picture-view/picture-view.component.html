@@ -1,12 +1,21 @@
 <div class="row">
   <div class="col-lg-3">
-    <app-location-search></app-location-search>
+    <app-location-list></app-location-list>
   </div>
   <div class="col-lg-9">
     <h2>Pictures</h2>
+
+    <div class="row">
+      <div class="col-lg-12">
+        <p>Date: (Example: 2/10/2017)
+          <input #dateFilterTextBox type="text" class="form-control" (keyup)="search(dateFilterTextBox.value)"></p>
+      </div>
+    </div>
+
     <ul class="rig columns-4">
-      <li *ngFor="let picture of pictures | async">
-        <a [routerLink]="['/detail', picture.uid]">
+      <li *ngFor="let picture of pictures">
+        <p>debug: {{picture.dateTaken}}</p>
+        <a [routerLink]="['/detail', country, state, city, beach, picture.uid]">
           <img src="{{picture.path}}" alt="{{picture.name}}">
         </a>
       </li>

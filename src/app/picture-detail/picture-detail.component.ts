@@ -3,7 +3,7 @@ import {ActivatedRoute, Params} from '@angular/router';
 
 import {PictureService} from '../picture-service/picture.service';
 import {FirebaseService} from '../firebase-service/firebase.service';
-import {Picture} from "../picture";
+import {Picture} from "../dtos/picture";
 
 import {AngularFire, FirebaseListObservable} from 'angularfire2';
 
@@ -16,7 +16,7 @@ export class PictureDetailComponent implements OnInit {
 
   private picture: Picture;
 
-  constructor(private pictureService: PictureService,
+  constructor(private pictureService: FirebaseService,
               private route: ActivatedRoute) {
   }
 
@@ -26,9 +26,9 @@ export class PictureDetailComponent implements OnInit {
      * still inflight, switchMap cancels that old request before calling
      * HeroService.getHero again. More info: https://angular.io/docs/ts/latest/guide/router.html#!#activated-route
      */
-    // [CT]: +params['id'] converts the param into a number ([+] operator in JS).
     this.route.params
-      .switchMap((params: Params) => this.pictureService.getPicture(params['uid']))
+      .switchMap((params: Params) =>
+        this.pictureService.getPicture(params['country'], params['state'], params['city'], params['beach'], params['picture']))
       .subscribe(picture => this.picture = picture);
   }
 }

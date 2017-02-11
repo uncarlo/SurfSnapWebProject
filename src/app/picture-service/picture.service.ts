@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 
-import { Picture }    from '../picture';
+import { Picture }    from '../dtos/picture';
 import { PICTURES }   from '../mock-pictures/mock-pictures'
 import {Observable} from 'rxjs/Observable';
 

@@ -17,7 +17,7 @@ import { AppComponent } from './app.component';
 import { AlertModule } from "ng2-bootstrap";
 import { SearchComponent } from './search/search.component';
 import { PictureViewComponent } from './picture-view/picture-view.component';
-import { LocationSearchComponent } from './location-search/location-search.component';
+import { LocationListComponent } from './location-list/location-list.component';
 import { PictureDetailComponent } from './picture-detail/picture-detail.component';
 
 // SERVICES
@@ -39,7 +39,7 @@ export const firebaseConfig = {
     SearchComponent,
     PictureViewComponent,
     PictureViewComponent,
-    LocationSearchComponent,
+    LocationListComponent,
     PictureDetailComponent
   ],
   imports: [
