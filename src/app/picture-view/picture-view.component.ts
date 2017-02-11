@@ -5,6 +5,7 @@ import {PictureService} from "../picture-service/picture.service";
 import {FirebaseService} from "../firebase-service/firebase.service";
 import {Picture} from "../dtos/picture";
 import {Country, State, City, Beach} from "../dtos/location";
+import {Observable, Subject} from "rxjs";
 
 @Component({
   selector: 'app-picture-view',
@@ -19,6 +20,7 @@ export class PictureViewComponent implements OnInit {
   private city: City;
   private beach: Beach;
   private pictures: Picture[];
+  private allPictures: Picture[];
 
   constructor(private pictureService: FirebaseService,
               private route: ActivatedRoute) {
@@ -34,6 +36,21 @@ export class PictureViewComponent implements OnInit {
           this.beach = params['beach'];
           return this.pictureService.getPictures(this.country, this.state, this.city, this.beach);
         }
-      ).subscribe(pictures => this.pictures = pictures);
+      ).subscribe(pictures => {
+        this.pictures = pictures;
+        this.allPictures = pictures;
+      });
+  }
+
+  search(term:string) {
+    if(term === "") {
+      this.pictures = this.allPictures;
+      return;
+    }
+
+    this.pictures = this.allPictures.filter(picture => {
+      var dateTaken = new Date(picture.dateTaken);
+      return dateTaken.toLocaleDateString() === term; // 2/10/2016
+    });
   }
 }

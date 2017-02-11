@@ -4,48 +4,58 @@ import {Picture}    from '../dtos/picture';
 import {Country, State, Beach, City}   from '../dtos/location';
 
 import {AngularFire, FirebaseListObservable} from 'angularfire2';
+import {Subject, Observable} from "rxjs";
 
 @Injectable()
 export class FirebaseService {
 
   constructor(private angularFire: AngularFire) {
+    this.dateTakenSubject = new Subject();
   }
 
-  getPicture(countryName, stateName, cityName, beachName, pictureUid): Promise<Picture> {
+  getPicture(countryName, stateName, cityName, beachName, pictureUid): Observable<Picture> {
     var picture =
       this.angularFire.database.object(`/Locations/${countryName}/states/${stateName}/cities/${cityName}/beaches/${beachName}/pictures/${pictureUid}`);
 
-    return Promise.resolve(picture);
+    return picture;
   }
 
-  getPictures(countryName, stateName, cityName, beachName): Promise<Picture[]> {
+  private dateTakenSubject: Subject<any>;
+
+  getPictures(countryName, stateName, cityName, beachName): Observable<Picture[]> {
     var pictures =
-      this.angularFire.database.list(`/Locations/${countryName}/states/${stateName}/cities/${cityName}/beaches/${beachName}/pictures`);
+      this.angularFire.database.list(`/Locations/${countryName}/states/${stateName}/cities/${cityName}/beaches/${beachName}/pictures`,
+        {
+          query:{
+            orderByChild: 'dateTaken',
+            // equalTo: this.dateTakenSubject
+          }
+        });
 
-    return Promise.resolve(pictures);
+    return pictures;
   }
 
-  getLocations(): Promise<Country[]> {
+  getLocations(): Observable<Country[]> {
     var locations = this.angularFire.database.list('/Locations/');
 
-    return Promise.resolve(locations);
+    return locations;
   }
 
-  getStates(countryName): Promise<State[]> {
+  getStates(countryName): Observable<State[]> {
     var states = this.angularFire.database.list('/Locations/' + countryName + '/states/');
 
-    return Promise.resolve(states);
+    return states;
   }
 
-  getCities(countryName, stateName): Promise<City[]> {
+  getCities(countryName, stateName): Observable<City[]> {
     var cities = this.angularFire.database.list(`/Locations/${countryName}/states/${stateName}/cities/`);
 
-    return Promise.resolve(cities);
+    return cities;
   }
 
-  getBeaches(countryName, stateName, cityName): Promise<Beach[]> {
+  getBeaches(countryName, stateName, cityName): Observable<Beach[]> {
     var beaches = this.angularFire.database.list('/Locations/' + countryName + '/states/' + stateName + '/cities/' + cityName + '/beaches/');
 
-    return Promise.resolve(beaches);
+    return beaches;
   }
 }

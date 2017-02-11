@@ -1,3 +1,7 @@
+.form-control {
+  width: 30%;
+}
+
 ul.rig {
   list-style: none;
   font-size: 0px;
