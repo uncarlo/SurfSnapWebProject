@@ -7,6 +7,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { HttpModule } from '@angular/http';
+import { DatePickerModule } from 'ng2-datepicker';
 
 // Firebase
 import { AngularFireModule, AngularFire } from 'angularfire2';
@@ -48,7 +49,8 @@ export const firebaseConfig = {
     HttpModule,
     AlertModule.forRoot(),
     AppRoutingModule,
-    AngularFireModule.initializeApp(firebaseConfig)
+    AngularFireModule.initializeApp(firebaseConfig),
+    DatePickerModule
   ],
   providers: [
     PictureService,
