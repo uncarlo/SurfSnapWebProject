@@ -1,11 +1,11 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Params} from '@angular/router';
 
 import {PictureService} from "../picture-service/picture.service";
 import {FirebaseService} from "../firebase-service/firebase.service";
 import {Picture} from "../dtos/picture";
 import {Country, State, City, Beach} from "../dtos/location";
-import {Observable, Subject} from "rxjs";
+import { DatePickerOptions, DateModel } from 'ng2-datepicker';
 
 @Component({
   selector: 'app-picture-view',
@@ -22,8 +22,15 @@ export class PictureViewComponent implements OnInit {
   private pictures: Picture[];
   private allPictures: Picture[];
 
+  private options: DatePickerOptions;
+  private date: DateModel;
+
   constructor(private pictureService: FirebaseService,
               private route: ActivatedRoute) {
+    this.options = new DatePickerOptions({
+      autoApply: true,
+      format: "M/DD/YYYY"
+    });
   }
 
   ngOnInit() {
@@ -52,5 +59,17 @@ export class PictureViewComponent implements OnInit {
       var dateTaken = new Date(picture.dateTaken);
       return dateTaken.toLocaleDateString() === term; // 2/10/2016
     });
+  }
+
+  dateSelected(e) {
+    if(e.type == "dateChanged") {
+      this.search(this.date.formatted);
+    }
+  }
+
+  clearDate() {
+    this.search("");
+    // HACK: Possible memory leak.
+    this.date = new DateModel();
   }
 }
